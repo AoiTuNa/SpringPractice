@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <context:property-placeholder location="classpath:greeter.properties"/>
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+    <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter" scope="singleton">
+        <qualifier type="com.nhnacademy.edu.springframework.greeting.annotation.GreeterQualifier">
+            <attribute key="language" value="ENGLISH"/>
+            <attribute key="dummy" value="false"/>
+        </qualifier>
+    </bean>
+
+    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter" scope="prototype">
+        <qualifier type="com.nhnacademy.edu.springframework.greeting.annotation.GreeterQualifier">
+            <attribute key="language" value="KOREAN"/>
+            <attribute key="dummy" value="false"/>
+        </qualifier>
+    </bean>
+
+    <!--<bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >
+    </bean>
+-->
+    <bean id="dbms" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="MYSQL"/>
+    </bean>
+
+
+
+
+</beans>

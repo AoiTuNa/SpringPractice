@@ -1,7 +1,9 @@
 package com.nhnacademy.edu.springframework.messagesender.service;
 
 import com.nhnacademy.edu.springframework.messagesender.User;
+import org.springframework.stereotype.Service;
 
+@Service("emailMessage")
 public class EmailMessage implements MessageSender{
     public EmailMessage(){
         System.out.println("Email Initialized");
